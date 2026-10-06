@@ -5,6 +5,11 @@ const morgan = require("morgan");
 
 const authRoutes = require("./routes/auth.routes.js");
 
+const artistRoutes = require("./routes/artist.routes");
+const categoryRoutes = require("./routes/category.routes");
+const artworkRoutes = require("./routes/artwork.routes");
+const adminRoutes = require("./routes/admin.routes");
+
 const app = express();
 
 // Security
@@ -27,6 +32,12 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use("/api/v1/auth", authRoutes);
+
+app.use("/api/v1/artists", artistRoutes);
+app.use("/api/v1/categories", categoryRoutes);
+app.use("/api/v1/artworks", artworkRoutes);
+app.use("/api/v1/admin", adminRoutes);
+
 
 // Health check
 app.get("/api/v1/health", (req, res) => {
