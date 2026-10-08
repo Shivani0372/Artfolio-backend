@@ -9,6 +9,10 @@ const artistRoutes = require("./routes/artist.routes");
 const categoryRoutes = require("./routes/category.routes");
 const artworkRoutes = require("./routes/artwork.routes");
 const adminRoutes = require("./routes/admin.routes");
+const wishlistRoutes = require("./routes/wishlist.routes");
+const cartRoutes = require("./routes/cart.routes");
+const orderRoutes = require("./routes/order.routes");
+const reviewRoutes = require("./routes/review.routes");
 
 const app = express();
 
@@ -20,7 +24,7 @@ app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
-  })
+  }),
 );
 
 // Request logging
@@ -30,14 +34,19 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.use("/api/v1/auth", authRoutes);
 
 app.use("/api/v1/artists", artistRoutes);
 app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/artworks", artworkRoutes);
 app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/wishlist", wishlistRoutes);
 
+app.use("/api/v1/cart", cartRoutes);
+
+app.use("/api/v1/orders", orderRoutes);
+
+app.use("/api/v1/reviews", reviewRoutes);
 
 // Health check
 app.get("/api/v1/health", (req, res) => {
@@ -47,6 +56,5 @@ app.get("/api/v1/health", (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
-
 
 module.exports = app;
