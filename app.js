@@ -13,6 +13,8 @@ const wishlistRoutes = require("./routes/wishlist.routes");
 const cartRoutes = require("./routes/cart.routes");
 const orderRoutes = require("./routes/order.routes");
 const reviewRoutes = require("./routes/review.routes");
+const artistDashboardRoutes = require("./routes/artistDashboard.routes");
+const customerDashboardRoutes = require("./routes/customerDashboard.routes");
 
 const app = express();
 
@@ -47,6 +49,9 @@ app.use("/api/v1/cart", cartRoutes);
 app.use("/api/v1/orders", orderRoutes);
 
 app.use("/api/v1/reviews", reviewRoutes);
+
+app.use("/api/v1/artist-dashboard", artistDashboardRoutes);
+app.use("/api/v1/customer-dashboard", customerDashboardRoutes);
 
 // Health check
 app.get("/api/v1/health", (req, res) => {
